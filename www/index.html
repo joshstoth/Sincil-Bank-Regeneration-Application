@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Camera App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--SOME APPLE SEETINGS-->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+       
+<link rel="stylesheet" href="css/index.css"/>
+<!--<script src="scripts/jquery-3.1.0.min.js"></script> -->
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="317030855857-ip4gpbcq91m7b356mpce62ueu775vg4v.apps.googleusercontent.com">
+<link rel="stylesheet" href="css/custom.css" />
+<script type="text/javascript" src="cordova.js"></script>
+
+   
+
+    <script src="lib/jquery.upvote.js"></script>
+
+    <link rel="stylesheet" href="lib/jquery.upvote.css">
+
+</head>
+     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  (APP START)  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+     
+
+
+<!--end offline display-->
+
+<body class="online">
+
+<!--<div id="offline" class="fixed">
+	<h2>You are not connected to the internet</h2>
+	<p>Please check your connection, or close the application and restart</p>
+	<br>
+	<p>You be online for the use of this application</p>
+</div> -->
+
+<!-- JQueryMobile page page - this div definds the page -->
+<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%;" s data-role="page" class="welcome" id="welcome" data-theme="b">
+	<center>
+<br>
+<br>
+<br>
+<br>
+        	<h1>Sincil Bank Regenaration</h1>
+	</center>
+	    <div role="main" class="ui-content">
+<br>
+<br>
+<br>
+        	<p align="center"><b>Welcome to the Sincil Bank Rengeration Application</b></p>
+
+        	<a href="#loadup" class="ui-btn ui-btn-b ui-corner-all">Start</a>
+        </div>
+</div>
+
+<!-- LOAD UP SPLASH SCREEN -->
+	<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" class="loadup" id="loadup" data-theme="b">
+		<header data-role="header">
+        	<h1>Sincil Bank Regenaration</h1>
+        </header>
+        <article role="main" class="ui-content">
+        </article>
+        <!-- href to sign or or sign up pages -->
+        <div role="main" class="ui-content">
+        	<p><b>Existing Users</b></p>
+        	<a href="#sign" class="ui-btn ui-btn-b ui-corner-all">Sign in</a>
+        	<p><b>Don't have an account?</b></p>
+        	<a href="#signUp" class="ui-btn ui-btn-b ui-corner-all">Sign Up</a>
+        </div>
+</div>
+ 
+<!--Login-->
+<!-- apply image to the background to ensure 100% no matter what size device is used -->
+	<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" id="sign" data-theme="b">
+           <center>
+            <h1>Sincil Bank Regeneration</h1>
+           </center>
+           <!-- input tags for data - would be sent to PHP if applciation was online -->
+        <div role="main" class="ui-content">
+            <h3>Sign In</h3>
+            <label for="email">Username</label>
+            <input type="text" name="email" id="username" value="">
+            
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" value="">
+            
+            <fieldset data-role="controlgroup">
+                <input type="checkbox" name="checkbox" id="checkbox" checked="">
+                <label for="checkbox">Remember me</label>
+            </fieldset>
+            
+            <!-- Save the username the user inputs - will be used later in the app -->
+            <a href="#loginSuccess" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all" onClick="saveUsername();">Submit</a>
+            
+            <p><a href="#">Forgot Password?</a></p>
+            
+            <div data-role="popup" id="loginSuccess" data-dismissible="false" style="max-width:400px;">
+                <div role="main" class="ui-content">
+                    <h3 class="">Login Success</h3>
+                    <p>Proceeding to application</p>
+                    <div class=""><a href="#home" class="ui-btn ui-corner-all ui-shadow ui-btn-b">OK</a></div>
+                </div>
+            </div>
+        </div>
+    </div> 
+             
+<!--Signup-->
+<!-- Example sign-up page of the application - again would contant PHP is application was online -->
+ <div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" id="signUp" data-theme="b">
+    <div data-role="header">
+        <h1>Sincil Bank Regeneration</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <h3>Sign Up</h3>
+                
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" value="">
+        
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" value="">
+        
+        <label for="email">Email Address</label>
+        <input id="email" type="text" name="email" value="">
+        
+         <label for="email">Username</label>
+        <input type="text" name="email" value="">
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" value="">
+        
+        <label for="passwordConfirm">Confirm Password</label>
+        <input type="password" name="passwordConfirm" id="passwordConfirm" value="">
+        
+        <a href="#SignupSuccess" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submitt" class="ui-btn ui-btn-b ui-corner-all">Submit</a>
+        
+        <div data-role="popup" id="SignupSuccess" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header">
+                <h1>Success</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <h3>Account Successful Created</h3>
+                <p>Proceed to Login.</p>
+                <div class="mc-text-center"><a href="#sign" class="ui-btn ui-corner-all ui-shadow ui-btn-b">OK</a></div>
+            </div>
+        </div>
+    </div><!-- /content -->
+</div><!-- /page -->  
+                          
+<!-- Home -->            
+	<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" class="home" id="home" data-theme="b">
+		<header>
+			<div class="custom-navbar" data-role="navbar">
+				<ul>
+				<li><a href="#profile" data-transition="slidedown" data-icon="user">Profile</a></li>
+				<li><a href="#savedImages" data-transition="slidedown" data-icon="grid">Saved Images</a></li>
+				</ul>
+			</div> 	
+		</header>
+                <!--CONTENT WITHIN THE PAGE (FEATURES)-->
+            
+			<article  role="main" class="ui-content">
+			<center>
+				<div id="divtip" class="divtip"><a id="tipButton" class="tipButton" href="#tapbackground" data-rel="popup" data-transition="pop" data-position-to="window">Tap me for a Tip</a></div>
+			</center>
+               	<p id="LastPhoto"></p>
+                <br />
+                <br />
+            </article>
+            
+            <img id="imageSincilBank" src="images/sincilbank.JPG" style="display: none"/>
+            <canvas id="homecanvas" width="100%" height="100%"></canvas>
+            <canvas id="imagecanvas"></canvas>
+           
+            <!-- Tip tag that is hidden - apears when the tip tag is tapped (Call to action) --> 
+        <div data-role="popup" class="tapbackground" id="tapbackground" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header">
+                <h1>Tip!</h1>
+            </div>
+            <div role="main" class="ui-content">
+               <center>
+                <h3>Take Photo of Sincil Bank</h3>
+                <p>To take photo of a area of sincil bank you would like to submit, tap the "Take Picture" button.</p>
+                <p>To show locations of posts submitted around you on a virtual map, swipe left.</p>
+                <p>To view submitted posts and rating, swipe right.</p>
+                </center>
+                <!-- Deletes the tip from the dom once its been selected -->
+                <div id="okclick" class="okclick"><a href="#home" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onClick="removeDiv(this)">OK</a></div>
+            </div>
+        </div>
+                <!--NAV BAR IN FOOTER (BETTER UI)-->
+<footer data-role="footer" data-position="fixed">
+	<div class="custom-navbar" data-role="navbar">
+		<ul>
+			<li><a href="#posts" data-transition="slide" data-direction="reverse" data-icon="bullets">Posts</a></li>
+			<li><a class="lol" href="#" id="btntakephoto" data-transition="none" data-icon="camera">Take Picture</a></li>
+			<li><a href="#map" data-transition="slide" data-icon="location">Map</a></li>
+			
+			<!--<li><a href="#submittion" data-transition="slide" data-icon="location">submittion</a></li> 
+			<li><a href="#page1" data-transition="slide" data-icon="location">page1</a></li> -->
+		</ul> 
+	</div>               
+</footer>
+	</div>
+	<!--</div>-->    
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  (END OF HOME PAGE)  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!-- See photo taken -->
+<!-- Page loaded once an image is taken with the live camera or input from the camera roll -->
+<div style="background-size: 100% 100%; background-position:100% 100%;" data-role="page" id="picture" class="picture" data-theme="b">
+    <div data-role="header">
+       <center>
+        <p>is this the photo you would like to submit?</p>
+       </center>
+    </div>
+ <article>
+ 	<div id="loading2" class="tipBut"></div>
+ </article>
+<!-- Nav-bar always in the footer -->
+<footer data-role="footer" data-position="fixed">
+	<div class="custom-navbar" data-role="navbar">
+		<ul>
+			<li><a href="#" id="retake" class="retake" data-icon="grid">Retake</a></li>
+			<li><a href="#home" id="" data-transition="none" data-icon="delete">Cancel</a></li>
+			<li><a href="#submittion" id="usePicture" data-transition="none" data-icon="camera">Use picture</a></li>
+		</ul>
+	</div>               
+</footer>	
+</div>
+<!--end of See photo taken-->
+
+<!--Submittion page-->
+<div id="submittion" class="submittion" data-role="page" data-theme="b">
+<div data-role="header">
+	<h1>Create Post</h1>
+</div>
+	<form>
+<div role="main" class="ui-content">
+<center>
+	 <label for="canvas">Image:</label>
+	<canvas id="canvasSub" name="canvas" class="canvasSub" width="200" height="200" style="border:1px solid">
+	</canvas>
+</center>
+ 	<div id="titletip" class="titletip"><a id="titletipButton" class="titletipButton" href="#tapbackgroun" data-rel="popup" data-transition="pop" data-position-to="window">I don't know what to have as my title?</a></div>
+ 
+<center>
+	<div class="ui-field-contain">
+ 	 <label name="lab" for="name">Title:</label>
+ 	 <input type="text" name="name" id="name" value="">
+	</div>
+
+ 
+<div class="ui-field-contain">
+	<label for="textarea">Description:</label>
+ 	 <textarea name="textarea" id="Descrip"></textarea>
+</div>
+
+<div class="ui-field-contain">
+    <label for="select-native-2">Type of Post:</label>
+    <select name="select-native-2" id="selectTypeOfPost" data-mini="true">
+        <option value="1">Suggestion</option>
+        <option value="2">Discussion</option>
+        <option value="3">Appreciation</option>
+    </select>
+</div>
+
+
+	<label for="slider-flip-m">Enable Geolocation of post?</label>
+<select name="slider-flip-m" id="slider-flip-geolocation" data-role="slider" data-mini="true">
+    <option value="No">No</option>
+    <option value="Yes" selected="">Yes</option>
+ </select>   
+   
+    <label for="slider-flip-m">Show your username on the Virtual Map?</label>
+<select name="slider-flip-m" id="slider-flip-username" data-role="slider" data-mini="true">
+    <option value="No">No</option>
+    <option value="Yes" selected="">Yes</option>
+</select>
+   
+    <div id="SubmitSub" class="SubmitSub"><a href="#home" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onClick="saveData();">Submit</a></div>
+</center>
+</div>
+        </form>
+
+
+        <div data-role="popup" class="tapbackgroun" id="tapbackgroun" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header">
+                <h1>Tip!</h1>
+            </div>
+            <div role="main" class="ui-content">
+               <centre>
+                <h3>Title</h3>
+                <p>Don't know what to have as your title?</p>
+                <p>Try and make your title relating to the image you are uploading</p>
+                <p>Inappropriate title will cause your post to be deleted.</p>
+               </centre>
+                <div id="" class=""><a href="#submittion" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onClick="removeDivv(this)">OK</a></div>
+            </div>
+        </div>
+
+
+<footer data-role="footer" data-position="fixed">
+	<div class="custom-navbar" data-role="navbar">
+		<ul>
+			<li><a href="#home" id="Cancel" class="custom-navbar" data-icon="delete">Cancel Submission</a></li>
+		</ul>
+	</div>               
+</footer>	
+</div>
+<!--End of Submittion page-->
+
+
+<div class="SubmittedPost" id="SubmittedPost" data-role="page" data-theme="b">
+
+</div>
+
+
+<!-- PAGE WHEN YOU CLICK ON A POST ON THE POST PAGE -->
+<div id="clickaPost" data-role="page" data-theme="b">
+	<div id="headeronClickPost" data-role="header">
+        <h1>Sincil Bank Regeneration</h1>
+    </div>
+    
+<div id="container" class="container">
+
+	<div class="fixed">
+		<div id="canvasContainer" class="canvasContainer">
+		<br><br>
+
+			<canvas id="canvasPost" name="canvas" class="canvasPost" width="150" height="150" style="border:2px solid">
+			</canvas>
+		</div><br>
+<br>
+<br>
+
+					<div id="topic" class="upvote">
+						<a class="upvote"></a>
+						<span class="count"></span>
+						<a class="downvote"></a>
+					</div>	
+	</div>     
+      
+       
+	<div id="flex" class="flex">  
+	<center>
+		<form>
+			<div role="main" class="ui-content">
+
+ 		<label for="user">Username:</label>
+ 	 	<input name="user" id="user" type="text" value="" class="field left" readonly>
+
+		<label for="textarea">Description</label>
+ 	 	<textarea name="textarea" id="Postttt" type="text" value="" class="field left"></textarea>
+
+    	<label for="select-native-2">Type of Post:</label>
+ 	 		<input name="select-native-2" id="option" type="text" value="" class="field left" readonly>
+
+<!-- Show geolocation is enabled, click a button to see it on the map -->
+<div id="GeoContainer">
+	<label for="mapButton">See location on the Virtual Map</label>
+    	<div name="mapButton" id="seeOnMap" class="seeOnMap"><a href="#map" class="ui-btn ui-corner-all ui-shadow ui-btn-b">Go</a>
+    	</div>
+  </div>
+    
+		</div>
+		</form>
+		</center>
+	</div>
+</div>
+	
+<div id="" class="formBackground">
+
+	<div id="" data-role="header">
+        <h2>Comments</h2>
+    </div> 
+<label for="textarea">Reply:</label>
+<textarea name="textarea" id=""></textarea>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+<footer data-role="footer" data-position="fixed">
+	<div class="" data-role="navbar">
+		<ul>
+			<li><a href="#posts" data-direction="reverse" data-transition="slide"  id="" class="" data-icon="">Back to all Posts</a></li>
+		</ul>
+	</div>               
+</footer>	
+	
+</div>
+
+
+
+
+
+
+
+<!--Posts-->
+<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" class="posts" id="posts" data-theme="b">
+	<!-- FEATURE 2 Page-->
+	<header data-role="header">
+		<h1 id="" class="">Sincil Bank Regeneration Community Posts</h1>
+		
+	</header>
+	<!--CONTENT WITHIN THE PAGE (FEATURES)-->
+		<article role="main" class="ui-content">
+			<h2>All Submitted Posts</h2>
+    <label for="select-native-2">Filter Posts by Submition:</label>
+    <select name="select-native-2" id="select">
+        <option value="1">Filter Posts by Submition Type</option>
+        <option value="Suggestion">Suggestion</option>
+        <option value="Discussion">Discussion</option>
+        <option value="Appreciation">Appreciation</option>
+    </select>
+        <div id="" class=""><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" onClick="ResetFilter();">Remove Filter</a></div>
+        <div id="loading" class="tipBut"></div>
+		
+		
+			<div data-role="listview" class="listPosts" id="listPosts" data-inset="true">	
+			
+			<!-- THIS LIST ITEMS NEED TO BE POPULTAED WITH THE TITLE THE USER SETS IN THE FORM-->
+			</div>
+		</article>
+
+<footer data-role="footer" data-position="fixed">
+	<!-- NAVBAR -->
+	<div class="custom-navbar" data-role="navbar">
+		<ul>
+			<li><a href="#posts" data-transition="slide" data-direction="reverse" data-icon="bullets">Posts</a></li>
+			<li><a href="#home" data-transition="slide" data-icon="plus">Camera</a></li>
+			<li><a href="#map" data-transition="slide" data-icon="location">Map</a></li>
+		</ul>
+	</div>
+</footer>
+    <div id="templates" class="hidden">
+        <div class="upvote">
+            <a class="upvote" title="This is good stuff. Vote it up! (Click again to undo)"></a>
+            <span class="count" title="Total number of votes"></span>
+            <a class="downvote" title="This is not useful. Vote it down. (Click again to undo)"></a>
+            <a class="star" title="Mark as favorite. (Click again to undo)"></a>
+        </div>
+    </div>
+	</div>
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  (END OF POSTS PAGE)  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  (END OF POSTS PAGE)  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            
+            
+            
+            
+<!-- Submitted posts -->
+<div id="submittedPosts" class="submittedPosts" data-role="page" data-theme="b">
+	<header data-role="header">
+		<h1>Submitted Posts</h1>
+	</header>
+	
+</div>
+<!-- END of Submitted posts -->
+<!--Map-->            
+<div data-role="page" id="map" data-theme="b" style="width: 100%; height: 100%">
+	<!-- FEATURE 3 Page-->
+	<header data-role="header">
+		<h1>Virtual Map</h1>
+	</header>
+	<div id="map_canvas"></div>
+		<!--CONTENT WITHIN THE PAGE (FEATURES)-->
+			<footer data-tap-toggle="false" data-role="footer" data-position="fixed">
+           	<!-- NAVBAR -->
+          <!-- 		<button data-role="button" id="startTracking_start">Show Current Location</button>
+           		<button data-role="button" id="getNewLocation">Show NEW Current Location</button>
+				<button data-role="button" id="startTracking_stop">Save Current Location info to Array JSON</button> -->
+			<div class="custom-navbar" data-role="navbar">
+				<ul>
+					<li><a href="#posts" data-transition="slide" data-direction="reverse" data-icon="bullets">Posts</a></li>
+					<li><a href="#home" data-transition="slide" data-direction="reverse" data-icon="plus">Camera</a></li>
+					<li><a href="#map" data-transition="slide" data-icon="location" class="changeMapColour" id="changeMapColour">Map</a></li>
+				</ul>
+            </div>
+            </footer>
+</div>
+
+<!--Profile-->            
+<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" id="profile" data-theme="b">
+	<!-- FEATURE 3 Page-->
+	<header data-role="header">
+		<h1>Profile</h1>
+	</header>
+		<!--CONTENT WITHIN THE PAGE (FEATURES)-->
+		<article role="main" class="ui-content">
+		<center>
+			<h2>Profile</h2>
+		
+		<canvas width="200" height="200" style="border:1px solid" id="profilePic"></canvas>
+		</center>
+			<a href="#sign" class="ui-btn ui-btn-b ui-corner-all">Log out</a>
+			<a href="#" class="ui-btn ui-btn-b ui-corner-all">See all Submitted posts</a>
+		</article>
+			<footer data-role="footer" data-position="fixed">
+           	<!-- NAVBAR -->
+			<div class="custom-navbar" data-role="navbar">
+				<ul>
+					<li><a href="#home" data-transition="slideup" data-icon="plus">Camera</a></li>
+				</ul>
+            </div>
+            </footer>
+</div>
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  (END OF MAP PAGE)  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--Saved Images-->            
+<div style="background: url(sincilbank.JPG); background-size: 100% 100%; background-position:100% 100%; " data-role="page" id="savedImages" data-theme="b">
+	<!-- FEATURE 3 Page-->
+	<header data-role="header">
+		<h1>Saved Images</h1>
+	</header>
+		<!--CONTENT WITHIN THE PAGE (FEATURES)-->
+		<article role="main" class="ui-content">
+			<h2>Saved Images</h2>	
+			<div data-role="content">
+			
+			<button class="selectImage" id="selectImage">Choose file</button>
+			
+			<div class="hiddenfile">
+			  <input type="file"  data-clear-btn="false" name="image" accept="image/*" capture>
+			</div>
+			
+			<div id="preview">
+			</div>
+			
+			<ul id="info" data-role="listview" data-inset="true">
+			</ul>
+        </div>
+			
+		</article>
+			<footer data-role="footer" data-position="fixed">
+           	<!-- NAVBAR -->
+			<div class="custom-navbar" data-role="navbar">
+				<ul>
+					<li><a href="#home" data-transition="slideup" data-icon="plus">Camera</a></li>
+				</ul>
+            </div>
+            </footer>
+
+</div>
+
+
+<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="http:maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPLY8BidI-YIc-1UtKTD0xwyTqyxDcrRc"></script>
+
+</body>
+</html>
